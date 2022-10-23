@@ -1,16 +1,17 @@
-import { ChakraProvider, CSSReset  } from '@chakra-ui/react';
+import { ChakraProvider, CSSReset } from "@chakra-ui/react";
 import theme from "../lib/theme";
-import react from "react";
-import {AppProps} from "next/app"
+import { AppProps } from "next/app";
+import Main from "../components/layouts/main";
 
-
-function MyApp({ Component, pageProps }:AppProps): React.ReactNode {
-  return (
-    <ChakraProvider theme={theme}>
-        <CSSReset />
-        <Component {...pageProps} />
-    </ChakraProvider>
-  )
+function MyApp({ Component, pageProps, router }: AppProps) {
+	return (
+		<ChakraProvider theme={theme}>
+			<CSSReset />
+			<Main router={router} title={Component.name}>
+				<Component {...pageProps} />
+			</Main>
+		</ChakraProvider>
+	);
 }
 
-export default MyApp
+export default MyApp;
