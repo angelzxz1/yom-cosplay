@@ -1,5 +1,6 @@
+import { Box } from "@chakra-ui/react";
 
-const Page = ()=>{
-    return <div>indexPage</div>
-}
-export default Page
+const Home = () => {
+	return <Box>indexPage</Box>;
+};
+export default Home;
