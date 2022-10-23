@@ -1,10 +1,16 @@
 import NextLink from "next/link";
 import { useColorModeValue, Link } from "@chakra-ui/react";
 
-const LinkItem = ({ href, path, children }) => {
+type props = {
+	href: string;
+	path: string;
+	children: any;
+};
+
+const LinkItem = ({ href, path, children }: props) => {
 	const active = path === href;
 	const color = useColorModeValue("black", "whiteAlpha.900");
-	const LinkStyle = {
+	const LinkStyle: {} = {
 		p: 2,
 		color: color,
 		borderRadius: "md",
@@ -19,7 +25,7 @@ const LinkItem = ({ href, path, children }) => {
 					h: "1px",
 					w: 0,
 					transition: "all 200ms ease",
-					bg: color
+					bg: color,
 			  }
 			: {
 					content: '""',
@@ -29,16 +35,16 @@ const LinkItem = ({ href, path, children }) => {
 					h: "1px",
 					w: "100%",
 					transition: "all 200ms ease",
-					bg: color
+					bg: color,
 			  },
 		_hover: !active
 			? {
 					_before: {
 						left: 0,
-						w: "100%"
-					}
+						w: "100%",
+					},
 			  }
-			: {}
+			: {},
 	};
 	return (
 		<NextLink href={href} passHref>

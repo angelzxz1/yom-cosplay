@@ -11,7 +11,7 @@ import {
 	MenuList,
 	MenuButton,
 	useColorModeValue,
-	IconButton
+	IconButton,
 } from "@chakra-ui/react";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import ThemeToggleButton from "./ThemeToggleButton";
@@ -36,9 +36,9 @@ const NavBar = ({ path }: props) => {
 				display="flex"
 				p={2}
 				maxW="container.md"
-				wrap="wrap"
-				align="center"
-				justify="space-between"
+				flexWrap="wrap"
+				alignItems="center"
+				justifyContent="space-between"
 			>
 				<Stack
 					direction={{ base: "column", md: "row" }}
@@ -55,7 +55,27 @@ const NavBar = ({ path }: props) => {
 						Works
 					</LinkItem>
 				</Stack>
-				<Box flex={1} align="right"></Box>
+				<Flex flex={1} justify="end">
+					<ThemeToggleButton />
+					<Box ml={2} display={{ base: "inline-block", md: "none" }}>
+						<Menu>
+							<MenuButton
+								as={IconButton}
+								icon={<HamburgerIcon />}
+								variant="outline"
+								aria-label="Options"
+							/>
+							<MenuList>
+								<NextLink href="/" passHref>
+									<MenuItem as={Link}>Home</MenuItem>
+								</NextLink>
+								<NextLink href="/works" passHref>
+									<MenuItem as={Link}>Works</MenuItem>
+								</NextLink>
+							</MenuList>
+						</Menu>
+					</Box>
+				</Flex>
 			</Container>
 		</Box>
 	);
